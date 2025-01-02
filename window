@@ -1,0 +1,38 @@
+#импорт бибилиотек
+import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+import subprocess
+#создаем родительный класс
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.Gui()
+    def Gui(self):  #создаем функции от коротой завист приложение
+        self.setWindowTitle("Wallpaper")        #name
+        self.setGeometry(300, 300, 1000, 1000)  #размеры окна
+
+        btn = QPushButton("buttom", self)       #создаем кнопку
+        btn.setGeometry(300, 300, 200, 200)
+        btn.clicked.connect(self.Red)           #конектим с другой функцией
+    def Red(self): #это надо переделать скорее всего
+        import good #импортирую файл с твоим кодом
+        while True:
+            import wallpaper
+            label = QLabel(self)
+            pixmap = QPixmap(from wallpaper import 0.jpg) #крч я пытался сделать чтобы изображение было
+            label.setPixmap(pixmap)
+
+            d = 20
+            label.setGeometry(20,d,100,100)
+            d+=10
+            label.show()
+            label.update()
+
+#здесь чисто уже выводим все
+if __name__ == '__main__':
+
+    app = QApplication([])
+    ex = Window()
+    ex.show()
+    sys.exit(app.exec_())
